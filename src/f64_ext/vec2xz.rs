@@ -946,6 +946,14 @@ mod test {
     }
 
     #[test]
+    fn test_angle_to_sign() {
+        assert_eq!(DVec2xz::X.angle_to_sign(DVec2xz::NEG_Z), 1.0);
+        assert_eq!(DVec2xz::X.angle_to_sign(DVec2xz::Z), -1.0);
+        assert_eq!(DVec2xz::NEG_X.angle_to_sign(DVec2xz::NEG_Z), -1.0);
+        assert_eq!(DVec2xz::NEG_X.angle_to_sign(DVec2xz::Z), 1.0);
+    }
+
+    #[test]
     fn test_rotate_towards() {
         assert_abs_diff_eq!(DVec2xz::X.rotate_towards(DVec2xz::Z, FRAC_PI_6), DVec2xz::from_angle(-FRAC_PI_6));
         assert_abs_diff_eq!(DVec2xz::Z.rotate_towards(DVec2xz::X, FRAC_PI_6), DVec2xz::from_angle(-FRAC_PI_3));
