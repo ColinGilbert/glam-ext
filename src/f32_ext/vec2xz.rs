@@ -869,6 +869,21 @@ mod test {
     use super::*;
 
     #[test]
+    fn test_test() {
+        let a = Vec2xz::from_angle(FRAC_PI_3);
+        let b = Vec2::from_angle(FRAC_PI_3);
+        println!("a:{:?} b:{:?}", a, b);
+
+        let pa = Vec2xz::X.angle_to_sign(Vec2xz::NEG_Z);
+        let pb = Vec2::X.perp_dot(Vec2::Y);
+        println!("pa:{:?} pb:{:?}", pa, pb);
+
+        let va = a.rotate(Vec2xz::X);
+        let vb = b.rotate(Vec2::X);
+        println!("va:{:?} vb:{:?}", va, vb);
+    }
+
+    #[test]
     fn test_from_angle() {
         fn tester(angle: f32) {
             let r2 = Vec2xz::from_angle(angle);
@@ -947,6 +962,14 @@ mod test {
         let v_to = Quat::from_rotation_y(PI) * Vec3::X;
         let a = Vec2xz::from_vec2(v_from.xz()).angle_to(Vec2xz::from_vec2(v_to.xz()));
         assert_abs_diff_eq!(-PI, a, epsilon = 1e-6);
+    }
+
+    #[test]
+    fn test_angle_to_sign() {
+        assert_eq!(Vec2xz::X.angle_to_sign(Vec2xz::NEG_Z), 1.0);
+        assert_eq!(Vec2xz::X.angle_to_sign(Vec2xz::Z), -1.0);
+        assert_eq!(Vec2xz::NEG_X.angle_to_sign(Vec2xz::NEG_Z), -1.0);
+        assert_eq!(Vec2xz::NEG_X.angle_to_sign(Vec2xz::Z), 1.0);
     }
 
     #[test]
