@@ -34,14 +34,14 @@ rkyv = ["dep:rkyv", "glam/rkyv"]
 bytecheck = ["glam/bytecheck"]
 
 [dependencies]
-glam = { version = "0.30", default-features = false }
+glam = { version = "0.33", default-features = true }
 
 approx = { version = "0.5", optional = true, default-features = false }
-bytemuck = { version = "1.9", optional = true, default-features = false, features = ["derive", "aarch64_simd", "wasm_simd"] }
+bytemuck = { version = "1.25", optional = true, default-features = false, features = ["derive", "aarch64_simd", "wasm_simd"] }
 libm = { version = "0.2", optional = true, default-features = false }
 serde = { version = "1.0", optional = true, default-features = false, features = [ "serde_derive" ] }
-rkyv = { version = "0.8", optional = true, default-features = false }
+rkyv = { version = "0.7", optional = true, default-features = false }
 
 [dev-dependencies]
 # Set a size_xx feature so that this crate compiles properly with --all-targets --all-features
-rkyv = { version = "0.8", default-features = false, features = ["alloc"] }
+rkyv = { version = "0.7", default-features = false, features = ["alloc"] }
